@@ -1,22 +1,23 @@
 from constants.rikstoto_api_constants import base_url
 from typing import List, Dict, Any
+from abc import ABC, abstractproperty
 
-class RaceInterface:
+class RaceInterface(ABC):
     """
     """
-    @property
+    @abstractproperty
     def win_odds_url(self) -> str:
         raise NotImplementedError
 
-    @property
+    @abstractproperty
     def place_odds_url(self) -> str:
         raise NotImplementedError
 
-    @property
+    @abstractproperty
     def twin_odds_url(self) -> str:
         raise NotImplementedError
 
-    @property
+    @abstractproperty
     def triple_odds_url(self) -> str:
         raise NotImplementedError
 

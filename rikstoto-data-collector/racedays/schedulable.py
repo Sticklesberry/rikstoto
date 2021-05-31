@@ -1,12 +1,13 @@
 from datetime import datetime
 from constants.rikstoto_api_constants import timestamp_format
-from typing import List, Dict, Any
+from typing import Any
+from abc import ABC, abstractproperty
 
-class SchedulableInterface:
+class SchedulableInterface(ABC):
     """
     Something that can be scheduled with crontab
     """
-    @property
+    @abstractproperty
     def is_today(self) -> bool:
         raise NotImplementedError
 
@@ -17,6 +18,3 @@ class Schedulable(SchedulableInterface):
     @property
     def is_today(self) -> bool:
         return self.start_time.date() == self.start_time.today().date()
-
-
-print(timestamp_format)
