@@ -1,5 +1,4 @@
 from typing import Dict, Any, List
-
 from racedays.race import Race
 from racedays.schedulable import Schedulable
 
@@ -16,9 +15,6 @@ class SchedulableRace(Schedulable, Race):
     win odds endpoint.
     """
     def __init__(self, raceday_key: str, race_number: int, start_time: str, *args: List[Any], **kwargs: Dict[Any, Any]):
-        #self.start_time = convert_timestamp_to_datetime(start_time)
-        #self.raceday_key: str = raceday_key
-        #self.race_number = race_number
         super().__init__(
             start_time=start_time,
             raceday_key=raceday_key,

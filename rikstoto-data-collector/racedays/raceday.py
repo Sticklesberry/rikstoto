@@ -59,9 +59,6 @@ def find_todays_races(tracks: List[Dict[str, Any]]):
                 if race_schedule.is_today:
                     todays_races.append(race_schedule)
 
-                #if start_time.date() == start_time.today().date():
-                    #todays_races.append(RaceSchedule(start_time, raceday_key, race_number))
-
     return todays_races
 
 

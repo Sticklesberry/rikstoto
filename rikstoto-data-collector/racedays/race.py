@@ -23,7 +23,6 @@ class RaceInterface(ABC):
 
 class Race(RaceInterface):
     def __init__(self, raceday_key: str, race_number: int, *args: List[Any], **kwargs: Dict[Any, Any]):
-        super().__init__(*args, **kwargs)
         self.raceday_key: str = raceday_key
         self.race_number: int = race_number
 
