@@ -1,6 +1,6 @@
 from typing import Dict, Any, List
-from data.race import Race
-from data.schedulable import Schedulable
+from components.race import Race
+from components.schedulable import Schedulable
 
 class SchedulableRace(Race, Schedulable):
     """

@@ -1,5 +1,5 @@
 import unittest
-from data.schedulable_race import SchedulableRace
+from components.schedulable_race import SchedulableRace
 from datetime import date
 
 class TestRaceSchedule(unittest.TestCase):

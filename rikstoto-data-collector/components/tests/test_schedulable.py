@@ -1,5 +1,5 @@
 import unittest
-from data.schedulable import Schedulable
+from components.schedulable import Schedulable
 from datetime import date
 
 class TestSchedulable(unittest.TestCase):

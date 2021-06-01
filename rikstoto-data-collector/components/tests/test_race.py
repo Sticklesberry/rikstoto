@@ -1,5 +1,5 @@
 import unittest
-from data.race import Race
+from components.race import Race
 
 class TestSchedulable(unittest.TestCase):
     def setUp(self):

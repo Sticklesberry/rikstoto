@@ -1,6 +1,6 @@
 from time import sleep # type: ignore
 from api.constants import base_url
-from data.schedulable_race import SchedulableRace
+from components.schedulable_race import SchedulableRace
 from datetime import date
 from typing import Dict, Any, List
 
