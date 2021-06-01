@@ -1,6 +1,6 @@
 import unittest
 from pprint import pprint
-from api.raceday.collect import (
+from api.raceday.collect_races import (
     todays_races_url,
     find_todays_races,
     #todays_races_to_odds_urls,

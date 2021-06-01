@@ -1,6 +1,6 @@
 import unittest
 import requests # type: ignore
-from api.raceday.collect import todays_races_url
+from api.raceday.collect_races import todays_races_url
 
 class TestRaceDay(unittest.TestCase):
     def setUp(self):
