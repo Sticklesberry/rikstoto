@@ -1,7 +1,7 @@
 from time import sleep # type: ignore
 from api.constants import base_url
 from data.schedulable_race import SchedulableRace
-
+from datetime import date
 from typing import Dict, Any, List
 
 """
@@ -16,7 +16,7 @@ Scheduling: https://pypi.org/project/python-crontab/
 # raceday constants
 todays_races_url = f"{base_url}/racedays/"
 
-def find_todays_races(tracks: List[Dict[str, Any]]):
+def find_races_of_date(tracks: List[Dict[str, Any]], date: date):
     """
     Given a track list dict, create a list of todays trot races represented
     as dictionaries with three key-value pairs.
@@ -42,7 +42,7 @@ def find_todays_races(tracks: List[Dict[str, Any]]):
     [RaceSchedule]
     """
 
-    todays_races: List[SchedulableRace] = []
+    races_of_date: List[SchedulableRace] = []
 
     for track in tracks:
         raceday_key = track["raceDayKey"]
@@ -56,10 +56,13 @@ def find_todays_races(tracks: List[Dict[str, Any]]):
 
                 race_schedule = SchedulableRace(start_time, raceday_key, race_number)
 
-                if race_schedule.is_today:
-                    todays_races.append(race_schedule)
+                if race_schedule.is_same_date_as(date):
+                    races_of_date.append(race_schedule)
 
-    return todays_races
+    return races_of_date
+
+def find_todays_races(tracks: List[Dict[str, Any]]):
+    return find_races_of_date(tracks, date.today())
 
 
 #def race_dict_to_odds_links(race_schedule: RaceSchedule):
