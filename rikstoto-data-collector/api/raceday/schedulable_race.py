@@ -1,8 +1,8 @@
 from typing import Dict, Any, List
-from racedays.race import Race
-from racedays.schedulable import Schedulable
+from api.raceday.race import Race
+from api.raceday.schedulable import Schedulable
 
-class SchedulableRace(Schedulable, Race):
+class SchedulableRace(Race, Schedulable):
     """
     A race schedule representation is a triple that contains the following data:
     race start time, unique race key and race number.
@@ -16,9 +16,9 @@ class SchedulableRace(Schedulable, Race):
     """
     def __init__(self, raceday_key: str, race_number: int, start_time: str, *args: List[Any], **kwargs: Dict[Any, Any]):
         super().__init__(
-            start_time=start_time,
             raceday_key=raceday_key,
             race_number=race_number,
+            start_time=start_time,
             *args,
             **kwargs,
         )
@@ -26,8 +26,8 @@ class SchedulableRace(Schedulable, Race):
 
     def to_json(self) -> Dict[str, Any]:
         return {
-            "start_time":  super().start_time,
-            "raceday_key": super().raceday_key,
-            "race_number": super().race_number,
+            "start_time":  self.start_time,
+            "raceday_key": self.raceday_key,
+            "race_number": self.race_number,
         }
 

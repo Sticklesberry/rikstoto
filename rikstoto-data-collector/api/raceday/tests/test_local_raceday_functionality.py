@@ -1,9 +1,9 @@
 import unittest
 from pprint import pprint
-from racedays.raceday import (
+from api.raceday.collect import (
     todays_races_url,
     find_todays_races,
-    todays_races_to_odds_urls,
+    #todays_races_to_odds_urls,
 )
 
 #pprint(todays_races_to_odds_urls(find_todays_races(raceday)))

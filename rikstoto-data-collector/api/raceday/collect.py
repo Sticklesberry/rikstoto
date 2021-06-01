@@ -1,11 +1,11 @@
 from time import sleep # type: ignore
-from constants.rikstoto_api_constants import base_url
-from racedays.schedulable_race import SchedulableRace
+from api.constants import base_url
+from api.raceday.schedulable_race import SchedulableRace
 
 from typing import Dict, Any, List
 
 """
-raceday.py
+collect.py
 
 Functionality for fetching info about todays trot races and scheduling processes
 to run for each of them.

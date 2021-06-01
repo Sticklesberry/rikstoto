@@ -1,5 +1,5 @@
 import unittest
-from racedays.schedulable import Schedulable
+from api.raceday.schedulable import Schedulable
 
 class TestSchedulable(unittest.TestCase):
     def setUp(self):

@@ -1,5 +1,5 @@
 from datetime import datetime
-from constants.rikstoto_api_constants import timestamp_format
+from api.utils import convert_timestamp_to_datetime
 from typing import Any
 from abc import ABC, abstractproperty
 
@@ -13,7 +13,7 @@ class SchedulableInterface(ABC):
 
 class Schedulable(SchedulableInterface):
     def __init__(self, start_time: str, *args: Any, **kwargs: Any):
-        self.start_time: datetime = datetime.strptime(start_time, timestamp_format)
+        self.start_time: datetime = convert_timestamp_to_datetime(start_time)
 
     @property
     def is_today(self) -> bool:

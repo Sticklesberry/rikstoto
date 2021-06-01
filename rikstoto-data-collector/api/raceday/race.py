@@ -1,4 +1,4 @@
-from constants.rikstoto_api_constants import base_url
+from api.constants import base_url
 from typing import List, Dict, Any
 from abc import ABC, abstractproperty
 

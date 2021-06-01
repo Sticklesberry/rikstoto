@@ -1,5 +1,5 @@
 import unittest
-from racedays.schedulable_race import SchedulableRace
+from api.raceday.schedulable_race import SchedulableRace
 from datetime import datetime
 
 class TestRaceSchedule(unittest.TestCase):
