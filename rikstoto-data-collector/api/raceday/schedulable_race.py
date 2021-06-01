@@ -18,6 +18,11 @@ class SchedulableRace(Race, Schedulable):
         Race.__init__(self, raceday_key, race_number, *args, **kwargs)
         Schedulable.__init__(self, start_time, *args, **kwargs)
 
+    def __str__(self) -> str:
+        return f"({self.raceday_key}, {self.race_number}, {self.start_time})"
+
+    def __repr__(self) -> str:
+        return self.__str__()
 
     def to_json(self) -> Dict[str, Any]:
         return {
