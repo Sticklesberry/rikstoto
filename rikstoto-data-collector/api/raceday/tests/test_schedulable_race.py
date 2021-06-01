@@ -1,13 +1,13 @@
 import unittest
 from api.raceday.schedulable_race import SchedulableRace
-from datetime import datetime
+from datetime import date
 
 class TestRaceSchedule(unittest.TestCase):
     def setUp(self):
         self.raceday_key = "S1_NR_2021-05-30"
         self.race_number = 1
         self.start_time = "2021-05-30T13:00:00"
-        self.race_schedule = SchedulableRace(self.raceday_key, self.race_number, self.start_time)
+        self.race_schedule = SchedulableRace(self.start_time, self.raceday_key, self.race_number)
 
     def test_win_odds_url(self):
         expected_win_odds_url = f"https://www.rikstoto.no/api/game/{self.raceday_key}/betdistribution/winodds/{self.race_number}"
@@ -42,10 +42,14 @@ class TestRaceSchedule(unittest.TestCase):
         )
 
     def test_is_today_when_true(self):
-        pass
+        self.assertFalse(self.race_schedule.is_today)
 
     def test_is_today_when_false(self):
-        pass
+        today = date.today()
+        today_start_time = f"{today.year}-{today.month}-{today.day}T12:00:00"
+        today_schedulable = SchedulableRace(today_start_time, self.raceday_key, self.race_number)
+
+        self.assertTrue(today_schedulable.is_today)
 
     def test_json_representation_is_as_expected(self):
         pass
