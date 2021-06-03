@@ -31,3 +31,12 @@ class SchedulableRace(Race, Schedulable):
             "race_number": self.race_number,
         }
 
+
+    def log_race_to_schedule(self, schedule_filename: str):
+        """
+        Writes the info about this schedulable race to a file.
+
+        Later the file can be read to schedule a task for the race, e.g. fetching win odds.
+        """
+        with open(schedule_filename, "a") as schedule:
+            schedule.write(f"{self.__str__()}\n")
