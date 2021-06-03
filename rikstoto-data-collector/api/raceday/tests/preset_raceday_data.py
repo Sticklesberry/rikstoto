@@ -1,4 +1,10 @@
-response_data = {
+from datetime import date
+from typing import Any, Dict
+
+response_date: date = date(2021, 6, 1)
+expected_number_of_races = 43
+
+response_data: Dict[str, Any] = {
     "result": [
         {
             "raceDayName": "Bjerke",
