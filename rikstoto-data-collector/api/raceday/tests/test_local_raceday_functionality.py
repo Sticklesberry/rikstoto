@@ -6,6 +6,7 @@ from api.raceday.collect_races import (
 from api.raceday.tests.preset_raceday_data import (
     response_data,
     win_odds_urls,
+    expected_number_of_races,
 )
 from datetime import date
 
@@ -21,8 +22,7 @@ class TestRaceDay(unittest.TestCase):
         self.odds_urls = win_odds_urls
 
     def test_find_todays_races_finds_correct_amount_of_races(self):
-        expected_amount_of_races = 43
-        self.assertEqual(expected_amount_of_races, len(self.races))
+        self.assertEqual(expected_number_of_races, len(self.races))
 
     def test_race_dict_to_odds_links(self):
         #for schedulable_race in self.races:
