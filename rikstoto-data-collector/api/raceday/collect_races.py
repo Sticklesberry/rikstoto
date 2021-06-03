@@ -16,7 +16,7 @@ Scheduling: https://pypi.org/project/python-crontab/
 # raceday constants
 todays_races_url = f"{base_url}/racedays/"
 
-def find_races_of_date(tracks: List[Dict[str, Any]], date: date):
+def find_races_of_date(tracks: List[Dict[str, Any]], date: date) -> List[SchedulableRace]:
     """
     Given a track list dict, create a list of todays trot races represented
     as dictionaries with three key-value pairs.
@@ -61,7 +61,7 @@ def find_races_of_date(tracks: List[Dict[str, Any]], date: date):
 
     return races_of_date
 
-def find_todays_races(tracks: List[Dict[str, Any]]):
+def find_todays_races(tracks: List[Dict[str, Any]]) -> List[SchedulableRace]:
     return find_races_of_date(tracks, date.today())
 
 
