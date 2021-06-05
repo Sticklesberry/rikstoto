@@ -1,7 +1,6 @@
 from datetime import date
 from typing import List, Dict, Any
 from api.raceday.collect_races import (
-    find_todays_races,
     find_races_of_date,
 )
 
