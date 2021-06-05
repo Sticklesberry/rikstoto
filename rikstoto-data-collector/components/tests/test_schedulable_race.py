@@ -1,6 +1,6 @@
 import unittest
 from components.schedulable_race import SchedulableRace
-from datetime import date
+from datetime import date, datetime
 
 class TestRaceSchedule(unittest.TestCase):
     def setUp(self):
@@ -51,5 +51,19 @@ class TestRaceSchedule(unittest.TestCase):
 
         self.assertTrue(today_schedulable.is_today)
 
-    def test_json_representation_is_as_expected(self):
-        pass
+    def test_initialize_from_string_representation_gives_correct_object(self):
+        """
+        Check that it is possible to initialize a SchedulableRace given an output
+        from its __repr__() method using SchedulableRace.init_from_string()
+        """
+        representation = "(N1_NR_2021-06-01,1,2021-06-01T09:05:00)"
+
+        expected_race_key = "N1_NR_2021-06-01"
+        expected_race_number = 1
+        expected_start_time = datetime(2021, 6, 1, 9, 5, 0)
+        sr = SchedulableRace.init_from_string(representation)
+
+        self.assertEqual(expected_race_key, sr.raceday_key)
+        self.assertEqual(expected_race_number, sr.race_number)
+        self.assertEqual(expected_start_time, sr.start_time)
+
