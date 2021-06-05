@@ -25,7 +25,8 @@ class Schedulable(SchedulableInterface):
         return f"{date}T{time}"
 
     def __repr__(self):
-        return self.__str__()
+        date, time = self.start_time.__str__().split(" ")
+        return f"{date}T{time}"
 
     @property
     def is_today(self) -> bool:

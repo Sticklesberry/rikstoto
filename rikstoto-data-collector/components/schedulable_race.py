@@ -24,7 +24,7 @@ class SchedulableRace(Race, Schedulable):
         return SchedulableRace(time, key, int(number))
 
     def __str__(self) -> str:
-        return f"({self.raceday_key},{self.race_number},{Schedulable.__repr__(self)})"
+        return f"({Race.__repr__(self)},{Schedulable.__repr__(self)})"
 
     def __repr__(self) -> str:
         return self.__str__()
