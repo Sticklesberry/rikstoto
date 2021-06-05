@@ -3,7 +3,7 @@ from pprint import pprint
 from api.raceday.collect_races import (
     find_races_of_date,
 )
-from api.raceday.tests.preset_raceday_data import (
+from api.raceday.tests.mock_raceday_data import (
     response_data,
     win_odds_urls,
     expected_number_of_races,

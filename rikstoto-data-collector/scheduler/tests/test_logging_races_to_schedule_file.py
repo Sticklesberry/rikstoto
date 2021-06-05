@@ -1,6 +1,6 @@
 import unittest
 from scheduler.scheduler import log_races_of_date_to_schedule
-from api.raceday.tests.preset_raceday_data import (
+from api.raceday.tests.mock_raceday_data import (
     response_data,
     response_date,
     expected_number_of_races,
