@@ -18,8 +18,13 @@ class SchedulableRace(Race, Schedulable):
         Race.__init__(self, raceday_key, race_number, *args, **kwargs)
         Schedulable.__init__(self, start_time, *args, **kwargs)
 
+    @staticmethod
+    def init_from_string(repr: str):
+        key, number, time = repr.lstrip("(").rstrip(")").split(",")
+        return SchedulableRace(time, key, int(number))
+
     def __str__(self) -> str:
-        return f"({self.raceday_key}, {self.race_number}, {self.start_time})"
+        return f"({self.raceday_key},{self.race_number},{Schedulable.__repr__(self)})"
 
     def __repr__(self) -> str:
         return self.__str__()
