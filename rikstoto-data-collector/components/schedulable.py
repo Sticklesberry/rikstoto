@@ -20,6 +20,13 @@ class Schedulable(SchedulableInterface):
     def is_same_date_as(self, date: date) -> bool:
         return self.start_time.date() == date
 
+    def __str__(self):
+        date, time = self.start_time.__str__().split(" ")
+        return f"{date}T{time}"
+
+    def __repr__(self):
+        return self.__str__()
+
     @property
     def is_today(self) -> bool:
         return self.is_same_date_as(date.today())
