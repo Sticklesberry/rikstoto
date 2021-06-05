@@ -24,6 +24,7 @@ class Schedulable(SchedulableInterface):
         date, time = self.start_time.__str__().split(" ")
         return f"{date}T{time}"
 
+    # why make it simple when you can make it hard? (same as self.rikstoto_time_string)
     def __repr__(self):
         date, time = self.start_time.__str__().split(" ")
         return f"{date}T{time}"
