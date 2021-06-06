@@ -1,5 +1,14 @@
 preset_race = ""
 
+expected_win_odds_labels = ["startNumber", "odds", "lastUpdated"]
+expected_win_odds_number_of_rows = 15
+expected_place_odds_labels = ["startNumber", "minOdds", "maxOdds", "lastUpdated"]
+expected_place_odds_number_of_rows = 15
+expected_twin_odds_labels = ["startNumber", "startNumber1", "startNumber2", "odds"]
+expected_twin_odds_number_of_rows = 105 # ? 15*14 = 210
+expected_twin_odds_labels = ["startNumber", "startNumber1", "startNumber2", "startNumber3", "odds"]
+expected_twin_odds_number_of_rows = 2245 # ? 15*14*13 = 2730
+
 mock_win_odds_response = {
     "result": [
         {
