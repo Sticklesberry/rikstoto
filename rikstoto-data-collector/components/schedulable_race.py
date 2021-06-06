@@ -29,6 +29,10 @@ class SchedulableRace(Race, Schedulable):
     def __repr__(self) -> str:
         return self.__str__()
 
+    @property
+    def race_name(self):
+        return Race.__str__(self)
+
     def to_json(self) -> Dict[str, Any]:
         return {
             "start_time":  self.start_time,

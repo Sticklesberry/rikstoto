@@ -30,7 +30,7 @@ class Race(RaceInterface):
         self.odds_base_url = f"{base_url}/game/{raceday_key}/odds"
 
     def __str__(self):
-        return f"{self.raceday_key},{self.race_number}"
+        return f"{self.raceday_key}-{self.race_number}"
 
     def __repr__(self):
         return f"{self.raceday_key},{self.race_number}"
