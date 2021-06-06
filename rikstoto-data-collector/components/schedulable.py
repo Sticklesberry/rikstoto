@@ -20,12 +20,12 @@ class Schedulable(SchedulableInterface):
     def is_same_date_as(self, date: date) -> bool:
         return self.start_time.date() == date
 
-    def __str__(self):
+    def __str__(self) -> str:
         date, time = self.start_time.__str__().split(" ")
         return f"{date}T{time}"
 
     # why make it simple when you can make it hard? (same as self.rikstoto_time_string)
-    def __repr__(self):
+    def __repr__(self) -> str:
         date, time = self.start_time.__str__().split(" ")
         return f"{date}T{time}"
 

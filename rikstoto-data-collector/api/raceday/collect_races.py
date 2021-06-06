@@ -67,6 +67,6 @@ def find_todays_races(tracks: List[Dict[str, Any]]) -> List[SchedulableRace]:
     return find_races_of_date(tracks, date.today())
 
 
-def fetch_todays_raceday_tracks():
+def fetch_todays_raceday_tracks() -> List[Dict[str, Any]]:
     return result_of_get_request(todays_races_url)
 

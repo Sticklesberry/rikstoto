@@ -30,7 +30,7 @@ class SchedulableRace(Race, Schedulable):
         return self.__str__()
 
     @property
-    def race_name(self):
+    def race_name(self) -> str:
         return Race.__str__(self)
 
     def to_json(self) -> Dict[str, Any]:
@@ -41,7 +41,7 @@ class SchedulableRace(Race, Schedulable):
         }
 
 
-    def log_race_to_schedule(self, schedule_filename: str):
+    def log_race_to_schedule(self, schedule_filename: str) -> None:
         """
         Writes the info about this schedulable race to a file.
 

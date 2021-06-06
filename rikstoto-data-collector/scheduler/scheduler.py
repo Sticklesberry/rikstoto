@@ -6,12 +6,12 @@ from api.raceday.collect_races import (
 
 std_schedule_filename = "race_schedule.txt"
 
-def log_races_of_date_to_schedule(tracks: List[Dict[str, Any]], date: date, filename=std_schedule_filename):
+def log_races_of_date_to_schedule(tracks: List[Dict[str, Any]], date: date, filename=std_schedule_filename) -> None:
     for race in find_races_of_date(tracks, date):
         race.log_race_to_schedule(filename)
 
 
-def log_todays_races_to_schedule(tracks: List[Dict[str, Any]], filename=std_schedule_filename):
+def log_todays_races_to_schedule(tracks: List[Dict[str, Any]], filename=std_schedule_filename) -> None:
     log_races_of_date_to_schedule(tracks, date.today())
 
 

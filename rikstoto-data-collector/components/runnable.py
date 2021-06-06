@@ -10,5 +10,5 @@ class Runnable(RunnableInterface):
     def __init__(self, function: Callable, *args, **kwargs):
         self.callback = function
 
-    def run(self):
+    def run(self) -> None:
         self.callback()
