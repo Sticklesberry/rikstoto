@@ -13,6 +13,7 @@ import csv
 from components.schedulable_race import SchedulableRace
 import requests
 from datetime import datetime
+import time
 
 
 def save_list_of_dicts_to_csv(list_of_dicts: List[Dict[str, Any]], filename: str, open_mode="w"):
@@ -30,6 +31,9 @@ def save_list_of_dicts_to_csv(list_of_dicts: List[Dict[str, Any]], filename: str
 
 
 class OddsCollector:
+    """
+    Given a SchedulableRace, collect oddses of the race until it starts.
+    """
     def __init__(self, race: SchedulableRace, *args, **kwargs):
         self.race = race
 
@@ -41,7 +45,7 @@ class OddsCollector:
         save_list_of_dicts_to_csv(oddses, filename)
 
     # 1. hvordan fikse venting mellom oddsene blir hentet?
-    def run(self):
+    def collect(self):
         self.store(
             requests.get(self.race.win_odds_url).json()["result"],
             datetime.now(),
@@ -65,3 +69,13 @@ class OddsCollector:
             datetime.now(),
             f"{self.race.race_name}-triple.csv",
         )
+
+    def run(self):
+        current_time = datetime.now()
+
+        # TODO: it is not always correct that the race has started on schedule due to being postponed etc
+        # but assume for now for simplicity that this is correct
+        if current_time < self.race.start_time:
+            self.collect()
+            time.sleep(60*15) # TODO: need to find a clever way of dynamically choosing how long to wait until the next race
+
