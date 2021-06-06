@@ -79,4 +79,4 @@ class TestOddsStoring(unittest.TestCase):
 
         first_race = todays_races[0]
         collector = OddsCollector(first_race)
-        collector.run()
+        collector.collect()
