@@ -13,9 +13,14 @@ from api.odds.tests.mock_odds_data import (
     expected_triple_odds_number_of_rows,
     expected_triple_odds_labels,
 )
-from api.odds.collect_odds import save_list_of_dicts_to_csv
+from api.odds.collect_odds import OddsCollector, save_list_of_dicts_to_csv
 import os
 import csv
+
+from api.raceday.collect_races import (
+    fetch_todays_raceday_tracks,
+    find_todays_races
+)
 
 class TestOddsStoring(unittest.TestCase):
     def help_test_writing_odds_response_to_a_csv_file(self, odds_response, filename, expected_labels, expected_number_of_rows):
@@ -62,3 +67,16 @@ class TestOddsStoring(unittest.TestCase):
              expected_triple_odds_labels,
              expected_triple_odds_number_of_rows
          )
+
+    from api.raceday import (
+        find_todays_races,
+        fetch_todays_raceday_tracks,
+    )
+    from api.odds import OddsCollector
+    def api_calling_test_of_storing_odds_from_a_race_from_today(self):
+        todays_tracks = fetch_todays_raceday_tracks()
+        todays_races = find_todays_races(todays_tracks)
+
+        first_race = todays_races[0]
+        collector = OddsCollector(first_race)
+        collector.run()
