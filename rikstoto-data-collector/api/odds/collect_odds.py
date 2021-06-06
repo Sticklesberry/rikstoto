@@ -10,6 +10,9 @@ from components.race import Race
 from typing import List, Dict, Any, Union
 from numbers import Number
 import csv
+from components.schedulable_race import SchedulableRace
+import requests
+from datetime import datetime
 
 
 def save_list_of_dicts_to_csv(list_of_dicts: List[Dict[str, Any]], filename: str, open_mode="w"):
@@ -24,3 +27,41 @@ def save_list_of_dicts_to_csv(list_of_dicts: List[Dict[str, Any]], filename: str
         dict_writer = csv.DictWriter(output_file, header) # type: ignore
         dict_writer.writeheader()
         dict_writer.writerows(list_of_dicts)
+
+
+class OddsCollector:
+    def __init__(self, race: SchedulableRace, *args, **kwargs):
+        self.race = race
+
+    @staticmethod
+    def store(oddses: List[Dict[str, Any]], timestamp: datetime, filename: str):
+        for dict in oddses:
+            dict.update(timestamp=timestamp)
+
+        save_list_of_dicts_to_csv(oddses, filename)
+
+    # 1. hvordan fikse venting mellom oddsene blir hentet?
+    def run(self):
+        self.store(
+            requests.get(self.race.win_odds_url).json()["result"],
+            datetime.now(),
+            f"{self.race.race_name}-win.csv",
+        )
+
+        self.store(
+            requests.get(self.race.place_odds_url).json()["result"],
+            datetime.now(),
+            f"{self.race.race_name}-place.csv",
+        )
+
+        self.store(
+            requests.get(self.race.twin_odds_url).json()["result"],
+            datetime.now(),
+            f"{self.race.race_name}-twin.csv",
+        )
+
+        self.store(
+            requests.get(self.race.triple_odds_url).json()["result"],
+            datetime.now(),
+            f"{self.race.race_name}-triple.csv",
+        )
