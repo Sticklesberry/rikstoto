@@ -14,6 +14,7 @@ from components.schedulable_race import SchedulableRace
 import requests
 from datetime import datetime
 import time
+from api.utils import result_of_get_request
 
 
 def save_list_of_dicts_to_csv(list_of_dicts: List[Dict[str, Any]], filename: str, open_mode="w"):
@@ -47,25 +48,25 @@ class OddsCollector:
     # 1. hvordan fikse venting mellom oddsene blir hentet?
     def collect(self):
         self.store(
-            requests.get(self.race.win_odds_url).json()["result"],
+            result_of_get_request(self.race.win_odds_url),
             datetime.now(),
             f"{self.race.race_name}-win.csv",
         )
 
         self.store(
-            requests.get(self.race.place_odds_url).json()["result"],
+            result_of_get_request(self.race.place_odds_url),
             datetime.now(),
             f"{self.race.race_name}-place.csv",
         )
 
         self.store(
-            requests.get(self.race.twin_odds_url).json()["result"],
+            result_of_get_request(self.race.twin_odds_url),
             datetime.now(),
             f"{self.race.race_name}-twin.csv",
         )
 
         self.store(
-            requests.get(self.race.triple_odds_url).json()["result"],
+            result_of_get_request(self.race.triple_odds_url),
             datetime.now(),
             f"{self.race.race_name}-triple.csv",
         )

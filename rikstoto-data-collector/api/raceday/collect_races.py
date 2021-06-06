@@ -4,6 +4,7 @@ from components.schedulable_race import SchedulableRace
 from datetime import date
 from typing import Dict, Any, List
 import requests
+from api.utils import result_of_get_request
 
 """
 collect.py
@@ -67,5 +68,5 @@ def find_todays_races(tracks: List[Dict[str, Any]]) -> List[SchedulableRace]:
 
 
 def fetch_todays_raceday_tracks():
-    return requests.get(todays_races_url).json()["result"]
+    return result_of_get_request(todays_races_url)
 
