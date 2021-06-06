@@ -3,6 +3,7 @@ from api.constants import base_url
 from components.schedulable_race import SchedulableRace
 from datetime import date
 from typing import Dict, Any, List
+import requests
 
 """
 collect.py
@@ -65,43 +66,6 @@ def find_todays_races(tracks: List[Dict[str, Any]]) -> List[SchedulableRace]:
     return find_races_of_date(tracks, date.today())
 
 
-#def race_dict_to_odds_links(race_schedule: RaceSchedule):
-#    """
-#    Given a dictionary of todays trot race schedules return a list of dictionaries 
-#    that contain urls for odds endpoints.
-#
-#    The input are represented as the following
-#    triples:
-#
-#    {
-#        "start_time":  datetime object of the race's start time,
-#        "raceday_key": a unique string representing a track's raceday,
-#        "race_number": the number of the race
-#    }
-#    """
-#    raceday_key = race_schedule["raceday_key"]
-#    race_number = race_schedule["race_number"]
-#
-#    betdistribution_base_url = f"{base_url}/game/{raceday_key}/betdistribution"
-#    odds_base_url = f"{base_url}/game/{raceday_key}/odds"
-#
-#    win_odds_url = f"{betdistribution_base_url}/winodds/{race_number}"
-#    place_odds_url = f"{betdistribution_base_url}/placeodds/{race_number}"
-#    twin_odds_url = f"{odds_base_url}/tv/{race_number}"
-#    triple_odds_url = f"{odds_base_url}/t/{race_number}"
-#
-#    return {
-#        "win_odds": win_odds_url,
-#        "place_odds": place_odds_url,
-#        "twin_odds": twin_odds_url,
-#        "triple_odds": triple_odds_url,
-#    }
-
-
-#def todays_races_to_odds_urls(todays_races: List[Dict[str, Any]]):
-#    """
-#    Given a list of todays races, create a list of the given race's
-#    odds endpoint urls (win, place, twin, triple).
-#    """
-#    return list(map(race_dict_to_odds_links, todays_races))
+def fetch_todays_raceday_tracks():
+    return requests.get(todays_races_url).json()["result"]
 
