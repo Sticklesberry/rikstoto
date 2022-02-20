@@ -1,10 +1,10 @@
 from datetime import datetime
 from unittest import result
-from api.utils import (
+from rikstotoetl.api.utils import (
     result_of_get_request,
     racedays_interval_url,
 )
-from api.constants import todays_races_url as racedays_url
+from rikstotoetl.api.constants import todays_races_url as racedays_url
 from typing import Dict, Any, List
 
 

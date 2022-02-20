@@ -1,5 +1,5 @@
 from datetime import datetime
-from api.constants import (
+from rikstotoetl.api.constants import (
     timestamp_format,
     base_url,
 )
@@ -18,7 +18,10 @@ def convert_datetime_to_datestring(date: datetime) -> str:
 
 
 def result_of_get_request(url) -> List[Dict[str, Any]]:
-    return requests.get(url).json()["result"]
+    response = requests.get(url)
+
+    return response.json()["result"]
+
 
 
 def racedays_interval_url(fra: datetime, til: datetime) -> str:
